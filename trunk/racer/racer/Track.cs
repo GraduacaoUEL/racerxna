@@ -50,7 +50,7 @@ namespace racer
             for (int i = 0; i < arraySize; i++)
             {
                 if (pista[i].Scale >= 2)
-                    pista[i].Scale = 0.25f;
+                    pista[i].Scale -= (2-0.25f);
                 this.pista[i].Scale = this.pista[i].Scale + incremento;
                 this.pista[i].Origin = this.pista[i].Tamanho / 2;
                 this.pista[i].LayerDepth = this.pista[i].Scale / 2; ;

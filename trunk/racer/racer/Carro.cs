@@ -61,6 +61,8 @@ namespace racer
                 veloc = value;
                 if (veloc < 0)
                     veloc = 0;
+                if (veloc > 0.8)
+                    veloc = 0.8f;
             }
         }
         public int Volante

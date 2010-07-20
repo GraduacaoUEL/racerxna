@@ -20,6 +20,9 @@ namespace racer
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        GameState gameState;
+
+        Testes teste;
 
         public Game1()
         {
@@ -35,9 +38,9 @@ namespace racer
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
+            this.teste = new Testes(Content, spriteBatch);
+            this.IsMouseVisible = true;
         }
 
         /// <summary>
@@ -66,27 +69,37 @@ namespace racer
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        /// 
+
+
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
+            MouseState mouseState = Mouse.GetState();
+            KeyboardState keyboardState = Keyboard.GetState();
 
-            // TODO: Add your update logic here
-
+            switch (gameState)
+            {
+                case GameState.estado0:
+                    teste.Update(mouseState,keyboardState);
+                    break;
+            }
             base.Update(gameTime);
         }
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
-
+            //essa sobrecarga do SpriteBatch.Begin, que recebe SpriteSortMode,  permite usar  o parametro layerDepht do Draw
+            spriteBatch.Begin(SpriteBlendMode.AlphaBlend,SpriteSortMode.FrontToBack,SaveStateMode.SaveState);
+            switch(gameState)
+            {
+                case GameState.estado0:
+                    teste.Draw();
+                    break;
+            }
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

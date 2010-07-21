@@ -16,6 +16,8 @@ namespace racer
 {
     class Carro
     {
+        //fiz essa classe pensado na possibilidade de fazer upgrades nos carros, por isso tudo depende de algo
+        //acho que não tem muito o que explicar qui
         #region Variaveis
         public Sprite textura;
         private int gear;

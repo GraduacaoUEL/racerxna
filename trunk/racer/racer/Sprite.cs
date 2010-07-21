@@ -16,6 +16,11 @@ namespace racer
 {
     class Sprite
     {
+        //fiz a classe Sprite diferente de como foi feito no space invaders, por que achei que nesse caso, os elementos do jogo
+        // e as imagens são menos relacionados do que lá.
+        // prefi que as outas classes contivessem spites, porque, por exemplo, não me parece que um carro seja uma imagem que 
+        //possui aceleração movimento etc, me parece mais algo que ente outras coisas, possui uma imagem.
+        //mas isso é só a minha opinião u_u
         #region Variaveis 
         private Vector2 position;
         private Vector2 tamanho;
@@ -31,6 +36,7 @@ namespace racer
         #endregion
 
         #region Construtor
+        //fui criando construtores conforme a necessidade foi surgindo ._. ...
         public Sprite(Texture2D ptextura ,Vector2 pposition, Vector2 ptamanho, Color pcor)
         {
             this.textura = ptextura;
@@ -134,6 +140,7 @@ namespace racer
         #endregion
 
         #region Metodos
+        //esse método foi criado pra interação com o mouse, acabei tirando a parte que utilizava, mas realmente gostei do método
         public void mouseInteraction(MouseState mouseState)
         {
             BoundingSphere mouse = new BoundingSphere(new Vector3((float)mouseState.X, (float)mouseState.Y, 0.0f), 0.1f);
@@ -149,6 +156,7 @@ namespace racer
         //    this.layerDepth = this.scale / 2;
         //}
 
+        //chamei o metodo de GetBox, porque imaginei também colocar um GetSphere e GetFrustrun...
         public BoundingBox GetBox()
         {
             return

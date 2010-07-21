@@ -21,7 +21,8 @@ namespace racer
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         GameState gameState;
-
+        // Não criei a classe Testes para fazer parte do jogo, era apenas pra testar as coisas sem misturar
+        //todas as outras classes até então nasceram dentro e apartir dela
         Testes teste;
 
         public Game1()

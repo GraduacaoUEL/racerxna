@@ -75,10 +75,12 @@ namespace racer
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            //    this.Exit();
             MouseState mouseState = Mouse.GetState();
             KeyboardState keyboardState = Keyboard.GetState();
+            if (keyboardState.IsKeyDown(Keys.Escape))
+                this.Exit();
 
             switch (gameState)
             {
@@ -93,7 +95,8 @@ namespace racer
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             //essa sobrecarga do SpriteBatch.Begin, que recebe SpriteSortMode,  permite usar  o parametro layerDepht do Draw
-            spriteBatch.Begin(SpriteBlendMode.AlphaBlend,SpriteSortMode.FrontToBack,SaveStateMode.SaveState);
+            //spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
+            spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.FrontToBack, SaveStateMode.SaveState);
             switch(gameState)
             {
                 case GameState.estado0:

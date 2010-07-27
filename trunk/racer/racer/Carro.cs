@@ -90,12 +90,53 @@ namespace racer
         public Carro(Sprite ptextura, int pposition)
         {
             this.textura = ptextura;
+            this.textura.Active = true;
             this.textura.Origin = this.textura.Tamanho / 2;
             this.position = pposition;
             this.torque = 0.0001f;
             this.acel = 0f;
             this.veloc = 0f;
             this.freio = 1.2f;
+        }
+        #endregion
+
+        #region Metodos
+        public void TurnLeft()
+        {
+            this.Volante--;
+        }
+        public void NTurnLeft()
+        {
+            this.Volante = this.volante / 2;
+        }
+
+        public void TurnRight()
+        {
+            this.Volante++;
+        }
+        public void NTurnRight()
+        {
+            this.Volante = this.volante / 2;
+        }
+
+        public void Accelerate()
+        {
+            this.Acel += this.Torque;
+        }
+        public void NAccelerate()
+        {
+            this.Acel = this.Acel / 2;
+        }
+
+        public void Brake()
+        {
+            this.Veloc = this.Veloc / this.Freio;
+        }
+
+        public void Update()
+        {
+            this.Veloc += this.Acel;
+            this.Veloc = this.Veloc / 1.01f;
         }
         #endregion
     }

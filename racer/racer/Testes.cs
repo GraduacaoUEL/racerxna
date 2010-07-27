@@ -30,7 +30,7 @@ namespace racer
         public Testes(ContentManager Content, SpriteBatch pspriteBatch)
         {
             this.spriteBatch = pspriteBatch;
-            this.pista = new Track(20,
+            this.pista = new Track(50,
                 Content.Load<Texture2D>(@"images\Pista"),
                 new Vector2(800, 600));
             this.nCarros = 1;

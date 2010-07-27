@@ -29,6 +29,7 @@ namespace racer
         private Color cor;
         private Rectangle sourceRectangle;
         private bool underMouse;
+        private bool active;
         private float rotation;
         private float scale;
         private float layerDepth;
@@ -107,6 +108,11 @@ namespace racer
             get { return underMouse; }
             set { underMouse = value; }
         }
+        public bool Active
+        {
+            get { return active; }
+            set { active = value; }
+        }
         public Rectangle SourceRectangle
         {
             get { return sourceRectangle; }
@@ -149,12 +155,6 @@ namespace racer
             else
                 this.underMouse = false;
         }
-        //public void aproach(float incremento)
-        //{
-        //    this.scale = this.scale + incremento;
-        //    this.origin = this.tamanho / 2;
-        //    this.layerDepth = this.scale / 2;
-        //}
 
         //chamei o metodo de GetBox, porque imaginei também colocar um GetSphere e GetFrustrun...
         public BoundingBox GetBox()
@@ -167,8 +167,11 @@ namespace racer
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.textura, this.position, this.sourceRectangle, this.cor,
-                this.rotation, this.origin, this.scale, this.effect, this.layerDepth);
+            if (this.active)
+            {
+                spriteBatch.Draw(this.textura, this.position, this.sourceRectangle, this.cor,
+                    this.rotation, this.origin, this.scale, this.effect, this.layerDepth);
+            }
         }
         #endregion
     }
